@@ -3,10 +3,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getAllTopicPaths, getCategory, getTopic } from '@/data/catalog';
 
 export function getStaticPaths() {
-  return getAllTopicPaths().filter(({ category, topic }) => {
-    const t = getTopic(category, topic);
-    return t?.isFree === true;
-  }).map(({ category, topic }) => ({ params: { category, topic } }));
+  return getAllTopicPaths()
+    .filter(({ category, topic }) => {
+      const t = getTopic(category, topic);
+      if (!t?.isFree) return false;
+      // Dedicated full lesson pages
+      if (category === 'system-design' && topic === 'fundamentals') return false;
+      return true;
+    })
+    .map(({ category, topic }) => ({ params: { category, topic } }));
 }
 
 const { category: categorySlug, topic: topicSlug } = Astro.params;

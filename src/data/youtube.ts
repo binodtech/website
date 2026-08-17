@@ -1,4 +1,4 @@
-/** Featured YouTube — @binodsuman (embed-verified, user-curated) */
+/** Featured YouTube — @binodsuman (user-curated, embed-verified) */
 
 export type FeaturedVideo = {
   id: string;
@@ -18,12 +18,12 @@ export const channelStats = {
 
 export const featuredVideos: FeaturedVideo[] = [
   {
-    id: 'hLvB2haod5w',
-    title: 'Design Distributed Job Scheduler',
+    id: 'cTMomjk1iRc',
+    title: 'Distributed Job Scheduler — System Design',
     category: 'System Design',
     duration: '45:00',
-    views: '22K',
-    highlight: 'Airflow / Temporal / Celery — full HLD & LLD walkthrough',
+    views: '24K',
+    highlight: 'Full system design walkthrough — scheduler architecture on whiteboard',
   },
   {
     id: '9dKaw65JqR4',

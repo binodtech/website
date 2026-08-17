@@ -29,10 +29,10 @@ export const categories: Category[] = [
     topics: [
       {
         slug: 'fundamentals',
-        title: 'SD Fundamentals',
-        description: 'Scalability, reliability, CAP theorem, and interview frameworks.',
-        duration: '45 min',
-        lessons: 6,
+        title: 'System Design Fundamentals',
+        description: 'Scalability, CAP, caching, load balancing, databases, CDN, and the 45-minute interview framework.',
+        duration: '90 min',
+        lessons: 10,
         level: 'Beginner',
         isFree: true,
       },
@@ -52,7 +52,7 @@ export const categories: Category[] = [
         duration: '1h 10m',
         lessons: 10,
         level: 'Intermediate',
-        isFree: false,
+        isFree: true,
       },
       {
         slug: 'chatgpt-system',
