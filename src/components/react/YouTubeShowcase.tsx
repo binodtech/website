@@ -16,9 +16,11 @@ export function YouTubeShowcase() {
           <div className="aspect-video">
             <iframe
               title={active.title}
-              src={`https://www.youtube.com/embed/${active.id}?rel=0`}
+              src={`https://www.youtube-nocookie.com/embed/${active.id}?rel=0&modestbranding=1`}
               className="h-full w-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </div>
@@ -51,7 +53,7 @@ export function YouTubeShowcase() {
               </div>
               <div className="min-w-0">
                 <p className="text-sm font-semibold leading-snug">{v.title}</p>
-                <p className="mt-0.5 text-xs text-slate-500">{v.category} · {v.duration}</p>
+                <p className="mt-0.5 text-xs text-slate-500">{v.category} · {v.views} views</p>
               </div>
             </button>
           ))}

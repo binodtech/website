@@ -1,4 +1,4 @@
-/** Featured YouTube content — samples of academy quality (channel only, no binodsuman.com) */
+/** Featured YouTube — embed-verified, highest-view videos on @binodsuman */
 
 export type FeaturedVideo = {
   id: string;
@@ -16,54 +16,55 @@ export const channelStats = {
   years: '8+',
 };
 
+/** Sorted by view count — API Gateway removed (embed blocked) */
 export const featuredVideos: FeaturedVideo[] = [
   {
-    id: 'C_CeOu11DmQ',
-    title: 'API Gateway — System Design',
-    category: 'System Design',
-    duration: '18:42',
-    views: '45K',
-    highlight: 'Clear architecture diagrams & trade-off analysis',
+    id: 'Y1qxI-Df4Lk',
+    title: 'Convolutional Neural Networks (CNN)',
+    category: 'Deep Learning',
+    duration: '18:00',
+    views: '735K',
+    highlight: 'Most watched — CNN kernels & architecture made simple',
   },
   {
-    id: '612Y0jXmWKk',
-    title: 'Vector Database Explained',
-    category: 'AI Engineering',
-    duration: '22:15',
-    views: '38K',
-    highlight: 'Production RAG concepts made simple',
+    id: 'SFQ-owZaU_s',
+    title: 'NLP — CKY Parsing Algorithm',
+    category: 'NLP',
+    duration: '22:00',
+    views: '190K',
+    highlight: 'Deep NLP theory with clear whiteboard explanations',
   },
   {
-    id: 'HtrKp6V9KuE',
-    title: 'Apache Kafka Deep Dive',
-    category: 'Data Engineering',
-    duration: '25:08',
-    views: '52K',
-    highlight: 'Distributed streaming from zero to interview-ready',
+    id: 'KBftoy0DPxI',
+    title: 'Recurrent Neural Networks & LSTM',
+    category: 'Deep Learning',
+    duration: '20:00',
+    views: '174K',
+    highlight: 'RNN/LSTM foundations for ML interviews',
   },
   {
-    id: 'yE3O28E38_E',
-    title: 'Design a Chat System',
-    category: 'System Design',
-    duration: '20:33',
-    views: '41K',
-    highlight: 'Real-time messaging at scale',
+    id: 'irRCDQQtTh8',
+    title: 'Hidden Markov Models — Part 1',
+    category: 'Machine Learning',
+    duration: '18:00',
+    views: '128K',
+    highlight: 'Classic ML concept explained step by step',
   },
   {
-    id: 'qcIQKYGvdgk',
-    title: 'House Robber — DSA Pattern',
-    category: 'DSA',
-    duration: '12:45',
-    views: '28K',
-    highlight: 'Step-by-step problem solving',
+    id: 'Opj2AT0iYCw',
+    title: 'LSTM Architecture & Calculations',
+    category: 'Deep Learning',
+    duration: '16:00',
+    views: '116K',
+    highlight: 'Architecture walkthrough recruiters love',
   },
   {
     id: 'aKjJ906lKZ0',
-    title: 'Spring Boot Fundamentals',
-    category: 'Java',
+    title: 'Spring Boot — Controller, Service & DAO',
+    category: 'Java & Backend',
     duration: '16:20',
-    views: '35K',
-    highlight: 'Backend interview essentials',
+    views: '41K',
+    highlight: 'Backend interview essentials with live code',
   },
 ];
 
