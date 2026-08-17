@@ -1,4 +1,4 @@
-/** Featured YouTube — embed-verified, highest-view videos on @binodsuman */
+/** Featured YouTube — @binodsuman (embed-verified, user-curated) */
 
 export type FeaturedVideo = {
   id: string;
@@ -10,61 +10,60 @@ export type FeaturedVideo = {
 };
 
 export const channelStats = {
-  subscribers: '50K+',
+  subscribers: '34,000+',
   videos: '250+',
   playlists: '30+',
   years: '8+',
 };
 
-/** Sorted by view count — API Gateway removed (embed blocked) */
 export const featuredVideos: FeaturedVideo[] = [
   {
-    id: 'Y1qxI-Df4Lk',
-    title: 'Convolutional Neural Networks (CNN)',
-    category: 'Deep Learning',
+    id: 'hLvB2haod5w',
+    title: 'Design Distributed Job Scheduler',
+    category: 'System Design',
+    duration: '45:00',
+    views: '22K',
+    highlight: 'Airflow / Temporal / Celery — full HLD & LLD walkthrough',
+  },
+  {
+    id: '9dKaw65JqR4',
+    title: 'Change Data Capture (CDC) with Debezium',
+    category: 'Data Engineering',
+    duration: '25:00',
+    views: '3.6K',
+    highlight: 'MySQL CDC setup — step-by-step production pattern',
+  },
+  {
+    id: 'Ua1gin5uDWY',
+    title: 'Kafka 4.2 — Brokers & Partitions',
+    category: 'Apache Kafka',
     duration: '18:00',
-    views: '735K',
-    highlight: 'Most watched — CNN kernels & architecture made simple',
+    views: '470',
+    highlight: 'Kafka 4.2 broker changes explained clearly',
   },
   {
-    id: 'SFQ-owZaU_s',
-    title: 'NLP — CKY Parsing Algorithm',
-    category: 'NLP',
-    duration: '22:00',
-    views: '190K',
-    highlight: 'Deep NLP theory with clear whiteboard explanations',
-  },
-  {
-    id: 'KBftoy0DPxI',
-    title: 'Recurrent Neural Networks & LSTM',
-    category: 'Deep Learning',
+    id: '0icnoQh2mUM',
+    title: 'Apache ZooKeeper — Basics',
+    category: 'ZooKeeper',
     duration: '20:00',
-    views: '174K',
-    highlight: 'RNN/LSTM foundations for ML interviews',
+    views: '3.5K',
+    highlight: 'Why ZooKeeper, use cases, whiteboard fundamentals',
   },
   {
-    id: 'irRCDQQtTh8',
-    title: 'Hidden Markov Models — Part 1',
-    category: 'Machine Learning',
-    duration: '18:00',
-    views: '128K',
-    highlight: 'Classic ML concept explained step by step',
+    id: 'KETUdCgXqg8',
+    title: 'Distributed Monitoring with ZooKeeper',
+    category: 'ZooKeeper',
+    duration: '22:00',
+    views: '360+',
+    highlight: 'Whiteboard + live coding for distributed monitoring',
   },
   {
-    id: 'Opj2AT0iYCw',
-    title: 'LSTM Architecture & Calculations',
-    category: 'Deep Learning',
-    duration: '16:00',
-    views: '116K',
-    highlight: 'Architecture walkthrough recruiters love',
-  },
-  {
-    id: 'aKjJ906lKZ0',
-    title: 'Spring Boot — Controller, Service & DAO',
-    category: 'Java & Backend',
-    duration: '16:20',
-    views: '41K',
-    highlight: 'Backend interview essentials with live code',
+    id: '44H3cEC2fFM',
+    title: 'Merge Intervals (LeetCode 56)',
+    category: 'DSA',
+    duration: '12:00',
+    views: '263K',
+    highlight: 'Sorting pattern — classic FAANG interval problem',
   },
 ];
 
@@ -82,16 +81,16 @@ export const featuredPlaylists = [
     color: '#f59e0b',
   },
   {
-    title: 'ChatGPT & GenAI',
-    id: 'PLIRnO_sdVuEcNu_8_jEpmydZLlhKGtYMU',
-    lessons: '25+',
-    color: '#10a37f',
-  },
-  {
     title: 'Apache Kafka',
     id: 'PLIRnO_sdVuEf1Ao9hnE9G8c0WHd0MbsOk',
     lessons: '20+',
     color: '#231f20',
+  },
+  {
+    title: 'Apache ZooKeeper',
+    id: 'PLIRnO_sdVuEdSDgDBDU2QbDPiFfAIDB-Q',
+    lessons: '10+',
+    color: '#059669',
   },
 ];
 
