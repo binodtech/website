@@ -1,7 +1,7 @@
 ---
 import LessonPage from '@/components/LessonPage.astro';
 import { getCategory } from '@/data/catalog';
-import { systemDesignFundamentals } from '@/data/lessons/system-design-fundamentals';
+import { systemDesignNfr } from '@/data/lessons/system-design-nfr';
 
 const category = getCategory('system-design')!;
 ---
@@ -9,10 +9,10 @@ const category = getCategory('system-design')!;
 <LessonPage
   categorySlug="system-design"
   categoryTitle={category.title}
-  lesson={systemDesignFundamentals}
-  asideNote="Practice with URL Shortener and Rate Limiter (free), or unlock ChatGPT system design, 31 core concepts, and Google SD collection with Pro."
+  lesson={systemDesignNfr}
+  asideNote="NFRs tie directly to every system design interview — practice applying them on URL Shortener and Rate Limiter next."
   nextLinks={[
-    { href: '/learn/system-design/nfr', label: 'Non-Functional Requirements' },
+    { href: '/learn/system-design/fundamentals', label: 'SD Fundamentals' },
     { href: '/learn/system-design/url-shortener', label: 'URL Shortener' },
     { href: '/learn/system-design/rate-limiter', label: 'Rate Limiter' },
   ]}

@@ -28,10 +28,19 @@ export const categories: Category[] = [
     color: 'from-indigo-500 to-blue-600',
     topics: [
       {
+        slug: 'nfr',
+        title: 'Non-Functional Requirements (NFR)',
+        description: 'Scalability, security, performance, monitoring, availability, and reliability — why, where, how, and when with execution flows.',
+        duration: '2h',
+        lessons: 7,
+        level: 'Beginner',
+        isFree: true,
+      },
+      {
         slug: 'fundamentals',
         title: 'System Design Fundamentals',
         description: 'Scalability, CAP, caching, load balancing, databases, CDN, and the 45-minute interview framework.',
-        duration: '90 min',
+        duration: '2h 30m',
         lessons: 10,
         level: 'Beginner',
         isFree: true,

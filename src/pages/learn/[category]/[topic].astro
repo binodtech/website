@@ -8,7 +8,7 @@ export function getStaticPaths() {
       const t = getTopic(category, topic);
       if (!t?.isFree) return false;
       // Dedicated full lesson pages
-      if (category === 'system-design' && topic === 'fundamentals') return false;
+      if (category === 'system-design' && (topic === 'fundamentals' || topic === 'nfr')) return false;
       return true;
     })
     .map(({ category, topic }) => ({ params: { category, topic } }));

@@ -3,26 +3,44 @@
 import { useState } from 'react';
 import { Play, ExternalLink, Users, Video } from 'lucide-react';
 import { featuredVideos, featuredPlaylists, channelStats, YOUTUBE_CHANNEL } from '@/data/youtube';
+import { youtubeEmbedUrl } from '@/lib/youtube';
+import { VideoThumbnail } from '@/components/react/VideoThumbnail';
 import { cn } from '@/lib/utils';
 
 export function YouTubeShowcase() {
   const [activeId, setActiveId] = useState(featuredVideos[0].id);
+  const [embedActive, setEmbedActive] = useState(false);
   const active = featuredVideos.find((v) => v.id === activeId) ?? featuredVideos[0];
+
+  const selectVideo = (id: string) => {
+    setActiveId(id);
+    setEmbedActive(true);
+  };
 
   return (
     <div className="grid gap-8 lg:grid-cols-5 lg:gap-10">
       <div className="lg:col-span-3">
         <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-2xl dark:border-slate-700">
           <div className="aspect-video">
-            <iframe
-              title={active.title}
-              src={`https://www.youtube-nocookie.com/embed/${active.id}?rel=0&modestbranding=1`}
-              className="h-full w-full"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+            {embedActive ? (
+              <iframe
+                title={active.title}
+                src={youtubeEmbedUrl(active.id)}
+                className="h-full w-full"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            ) : (
+              <VideoThumbnail
+                videoId={active.id}
+                title={active.title}
+                className="h-full w-full"
+                showPlay
+                onClick={() => setEmbedActive(true)}
+              />
+            )}
           </div>
           <div className="border-t border-slate-800 bg-slate-900 p-4 sm:p-5">
             <p className="text-xs font-semibold uppercase tracking-wide text-blue-400">{active.category}</p>
@@ -40,18 +58,20 @@ export function YouTubeShowcase() {
             <button
               key={v.id}
               type="button"
-              onClick={() => setActiveId(v.id)}
+              onClick={() => selectVideo(v.id)}
               className={cn(
-                'flex items-start gap-3 rounded-xl border p-3 text-left transition',
+                'flex items-start gap-3 rounded-xl border p-2 text-left transition',
                 activeId === v.id
                   ? 'border-brand-500 bg-brand-50 dark:border-blue-500 dark:bg-blue-500/10'
                   : 'border-slate-200 bg-white hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900'
               )}
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-900 text-white">
-                <Play className="h-4 w-4" />
-              </div>
-              <div className="min-w-0">
+              <VideoThumbnail
+                videoId={v.id}
+                title={v.title}
+                className="h-16 w-28 shrink-0 rounded-lg"
+              />
+              <div className="min-w-0 py-0.5">
                 <p className="text-sm font-semibold leading-snug">{v.title}</p>
                 <p className="mt-0.5 text-xs text-slate-500">{v.category} · {v.views} views</p>
               </div>
