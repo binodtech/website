@@ -43,11 +43,15 @@ export function AppHeader() {
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-          <a href="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-sm text-white">
-              {SITE.shortName}
-            </span>
-            <span className="hidden sm:inline">
+          <a href="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight">
+            <img
+              src="/logo-icon.png"
+              alt=""
+              width={40}
+              height={40}
+              className="h-10 w-10 shrink-0 object-contain"
+            />
+            <span className="hidden sm:inline leading-tight">
               Binod Suman{' '}
               <span className="text-brand-600 dark:text-blue-400">Academy</span>
             </span>
