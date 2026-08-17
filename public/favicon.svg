@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Binod Suman Academy">
-  <rect width="64" height="64" rx="14" fill="#1e293b"/>
-  <rect x="4" y="4" width="56" height="56" rx="12" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <text x="32" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#fff">BA</text>
+  <rect width="64" height="64" rx="14" fill="#2563eb"/>
+  <text x="32" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#ffffff">BSA</text>
 </svg>

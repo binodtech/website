@@ -48,8 +48,8 @@ export function AppHeader() {
               {SITE.shortName}
             </span>
             <span className="hidden sm:inline">
-              {SITE.displayName.split(' ')[0]}{' '}
-              <span className="text-brand-600 dark:text-blue-400">{SITE.displayName.split(' ')[1]}</span>
+              Binod Suman{' '}
+              <span className="text-brand-600 dark:text-blue-400">Academy</span>
             </span>
           </a>
         </div>

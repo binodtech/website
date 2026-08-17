@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export const SITE = {
   shortName: 'BSA',
   name: 'Binod Suman Academy',
-  displayName: 'Binod Academy',
+  displayName: 'Binod Suman Academy',
   tagline: 'Learn. Build. Crack Interviews. Transform Your Career.',
   url: 'https://binodtech.com',
   youtubeUrl: 'https://youtube.com/@binodsuman',
