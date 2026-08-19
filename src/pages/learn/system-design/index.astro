@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SdLearnShell } from '@/components/react/SdLearnShell';
+
+const t = Astro.url.searchParams.get('t') || 'introduction';
+---
+
+<BaseLayout
+  title="Learn System Design — Concepts, Patterns & Question Breakdowns"
+  description="Hello Interview–style System Design track: core concepts, key technologies, patterns, and full question breakdowns — all unlocked."
+  bare
+>
+  <SdLearnShell client:load initialSlug={t} />
+</BaseLayout>

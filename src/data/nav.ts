@@ -42,7 +42,7 @@ export const sidebarSections: SidebarSection[] = [
 export const learnTracks = [
   {
     label: 'System Design',
-    description: 'Classic & Google-scale interviews',
+    description: 'Concepts, patterns & 30+ breakdowns',
     href: '/learn/system-design',
     color: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300',
   },
@@ -53,8 +53,14 @@ export const learnTracks = [
     color: 'bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300',
   },
   {
-    label: 'AI Engineering',
-    description: 'LLMs, RAG, agents, MCP',
+    label: 'LeetCode 75',
+    description: '75 must-know interview problems',
+    href: '/learn/leetcode-75',
+    color: 'bg-teal-100 text-teal-700 dark:bg-teal-500/20 dark:text-teal-300',
+  },
+  {
+    label: 'AI & ML',
+    description: 'GenAI, MCP, agents, Cursor & automation',
     href: '/learn/ai-engineering',
     color: 'bg-violet-100 text-violet-700 dark:bg-violet-500/20 dark:text-violet-300',
   },

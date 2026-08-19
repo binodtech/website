@@ -7,11 +7,13 @@ import Footer from '@/components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  bare?: boolean;
 }
 
 const {
   title = SITE.name,
   description = 'Master System Design, DSA, AI Engineering & FAANG interviews with structured learning paths.',
+  bare = false,
 } = Astro.props;
 const fullTitle = title === SITE.name ? `${SITE.name} — ${SITE.tagline}` : `${title} | ${SITE.name}`;
 ---
@@ -39,6 +41,6 @@ const fullTitle = title === SITE.name ? `${SITE.name} — ${SITE.tagline}` : `${
     <main>
       <slot />
     </main>
-    <Footer />
+    {!bare && <Footer />}
   </body>
 </html>

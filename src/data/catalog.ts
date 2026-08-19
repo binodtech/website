@@ -113,14 +113,14 @@ export const categories: Category[] = [
   {
     slug: 'dsa',
     title: 'DSA & Coding',
-    description: 'Patterns, LeetCode-style problems, and coding interview scripts.',
+    description: '25 patterns × 10 problems — the interview roadmap that covers 80–90% of coding rounds.',
     icon: 'Terminal',
     color: 'from-amber-500 to-orange-500',
     topics: [
       {
         slug: 'patterns-intro',
         title: 'DSA Patterns Overview',
-        description: 'How to recognize and apply the 14 essential patterns.',
+        description: 'How to recognize and apply the 25 essential patterns.',
         duration: '40 min',
         lessons: 5,
         level: 'Beginner',
@@ -128,10 +128,10 @@ export const categories: Category[] = [
       },
       {
         slug: 'two-pointers',
-        title: 'Two Pointers Pattern',
-        description: 'Sorted arrays, sliding windows, and pair problems.',
-        duration: '50 min',
-        lessons: 7,
+        title: 'Open full DSA track',
+        description: '250 LeetCode problems with Java/Python — Hello Interview–style lessons.',
+        duration: '40h+',
+        lessons: 250,
         level: 'Beginner',
         isFree: true,
       },

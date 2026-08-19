@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { DsaLearnShell } from '@/components/react/DsaLearnShell';
+
+const t = Astro.url.searchParams.get('t') || 'arrays';
+---
+
+<BaseLayout
+  title="Learn Coding / DSA — 25 Patterns · 250 Problems"
+  description="Master 25 DSA patterns and 250 high-frequency LeetCode questions with Hello Interview–style explanations, Java and Python solutions."
+  bare
+>
+  <DsaLearnShell client:load initialSlug={t} />
+</BaseLayout>

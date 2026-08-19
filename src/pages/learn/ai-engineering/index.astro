@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { AiLearnShell } from '@/components/react/AiLearnShell';
+
+const t = Astro.url.searchParams.get('t') || 'genai-foundations';
+---
+
+<BaseLayout
+  title="Learn AI & ML — GenAI, Agents, MCP, Cursor & Automation"
+  description="Original BinodTech AI & ML track: Generative AI Foundations, MCP, n8n, Claude Code, Cursor, LangChain, Llama Stack, and Agentic System Design — all unlocked."
+  bare
+>
+  <AiLearnShell client:load initialSlug={t} />
+</BaseLayout>

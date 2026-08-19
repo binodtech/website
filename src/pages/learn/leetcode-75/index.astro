@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Leetcode75Shell } from '@/components/react/Leetcode75Shell';
+
+const t = Astro.url.searchParams.get('t') || 'array-string';
+---
+
+<BaseLayout
+  title="LeetCode 75 Study Plan"
+  description="LeetCode 75 — 75 interview problems across 22 patterns with importance stars, Java and Python solutions."
+  bare
+>
+  <Leetcode75Shell client:load initialSlug={t} />
+</BaseLayout>
