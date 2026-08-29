@@ -6,8 +6,11 @@ Premium EdTech platform for FAANG interview prep, system design, AI engineering,
 
 ## Local development
 
+This is an Astro app (not static HTML). After cloning:
+
 ```bash
-cd binodsuman-academy
+git clone https://github.com/binodtech/website.git
+cd website
 npm install
 npm run dev
 ```
@@ -20,6 +23,8 @@ Production preview:
 npm run build
 npm run preview
 ```
+
+This repo is separate from the personal HTML site [binodsuman.com](https://binodsuman.com) (`github.com/binodsuman/binodsuman`). To run that site locally, clone that repo and use `python3 -m http.server 8000`.
 
 ## Site structure
 
@@ -39,13 +44,11 @@ To avoid confusion with your personal `binodsuman` repo:
 2. Create an empty repo: `website` or `academy`
 3. Push this project:
 
+This project is already connected to **https://github.com/binodtech/website**.
+
 ```bash
-cd binodsuman-academy
-git init
-git add .
-git commit -m "Initial Binod Suman Academy site"
-git branch -M main
-git remote add origin https://github.com/YOUR-ORG/academy.git
+cd binodtech
+git remote -v
 git push -u origin main
 ```
 
