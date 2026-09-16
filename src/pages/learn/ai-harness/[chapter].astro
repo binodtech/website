@@ -1,0 +1,47 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory, getTopic } from '@/data/catalog';
+import { ahRegistry, ahWrittenSlugs } from '@/data/lessons/ah-index';
+
+export function getStaticPaths() {
+  const category = getCategory('ai-harness')!;
+  const ordered = category.topics.map((t) => t.slug).filter((slug) => ahWrittenSlugs.includes(slug));
+
+  return ordered.map((slug, i) => ({
+    params: { chapter: slug },
+    props: {
+      chapterSlug: slug,
+      prevSlug: i > 0 ? ordered[i - 1] : null,
+      nextSlug: i < ordered.length - 1 ? ordered[i + 1] : null,
+    },
+  }));
+}
+
+const { chapterSlug, prevSlug, nextSlug } = Astro.props as {
+  chapterSlug: string;
+  prevSlug: string | null;
+  nextSlug: string | null;
+};
+
+const category = getCategory('ai-harness')!;
+const lesson = ahRegistry[chapterSlug];
+
+const linkFor = (slug: string) => {
+  const topic = getTopic('ai-harness', slug);
+  return { href: `/learn/ai-harness/${slug}`, label: topic?.title ?? slug };
+};
+
+const nextLinks = [
+  ...(nextSlug ? [linkFor(nextSlug)] : []),
+  ...(prevSlug ? [linkFor(prevSlug)] : []),
+  { href: '/learn/ai-harness', label: 'Full course syllabus' },
+];
+---
+
+<LessonPage
+  categorySlug="ai-harness"
+  categoryTitle={category.title}
+  lesson={lesson}
+  asideNote="This series is about building the infrastructure behind an AI agent — not using a product. Claude Code is one harness you already use; here you learn why that harness works and how to design your own. Read the ten classes in order."
+  nextLinks={nextLinks}
+/>

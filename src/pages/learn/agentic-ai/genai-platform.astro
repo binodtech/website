@@ -1,0 +1,18 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory } from '@/data/catalog';
+import { agenticAiGenaiPlatform } from '@/data/lessons/agentic-ai-genai-platform';
+
+const category = getCategory('agentic-ai')!;
+---
+
+<LessonPage
+  categorySlug="agentic-ai"
+  categoryTitle={category.title}
+  lesson={agenticAiGenaiPlatform}
+  asideNote="Step 5 builds directly on the planning and tool-selection material in the Agents lesson — read that first if you skipped it."
+  nextLinks={[
+    { href: '/learn/agentic-ai/agents', label: 'Agents' },
+    { href: '/learn/agentic-ai', label: 'Agentic AI track' },
+  ]}
+/>

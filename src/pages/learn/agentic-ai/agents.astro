@@ -1,0 +1,18 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory } from '@/data/catalog';
+import { agenticAiAgents } from '@/data/lessons/agentic-ai-agents';
+
+const category = getCategory('agentic-ai')!;
+---
+
+<LessonPage
+  categorySlug="agentic-ai"
+  categoryTitle={category.title}
+  lesson={agenticAiAgents}
+  asideNote="This is the first topic in the Agentic AI track. Memory systems, eval harnesses, and multi-agent orchestration come next."
+  nextLinks={[
+    { href: '/learn/agentic-ai', label: 'Agentic AI track' },
+    { href: '/learn/ai-engineering', label: 'AI & ML track' },
+  ]}
+/>

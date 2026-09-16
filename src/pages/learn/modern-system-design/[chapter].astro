@@ -1,0 +1,48 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory, getTopic } from '@/data/catalog';
+import { msdRegistry, msdWrittenSlugs } from '@/data/lessons/msd-index';
+
+export function getStaticPaths() {
+  const category = getCategory('modern-system-design')!;
+  // Course order comes from the catalog so Previous/Next follows the syllabus.
+  const ordered = category.topics.map((t) => t.slug).filter((slug) => msdWrittenSlugs.includes(slug));
+
+  return ordered.map((slug, i) => ({
+    params: { chapter: slug },
+    props: {
+      chapterSlug: slug,
+      prevSlug: i > 0 ? ordered[i - 1] : null,
+      nextSlug: i < ordered.length - 1 ? ordered[i + 1] : null,
+    },
+  }));
+}
+
+const { chapterSlug, prevSlug, nextSlug } = Astro.props as {
+  chapterSlug: string;
+  prevSlug: string | null;
+  nextSlug: string | null;
+};
+
+const category = getCategory('modern-system-design')!;
+const lesson = msdRegistry[chapterSlug];
+
+const linkFor = (slug: string) => {
+  const topic = getTopic('modern-system-design', slug);
+  return { href: `/learn/modern-system-design/${slug}`, label: topic?.title ?? slug };
+};
+
+const nextLinks = [
+  ...(nextSlug ? [linkFor(nextSlug)] : []),
+  ...(prevSlug ? [linkFor(prevSlug)] : []),
+  { href: '/learn/modern-system-design', label: 'Full course syllabus' },
+];
+---
+
+<LessonPage
+  categorySlug="modern-system-design"
+  categoryTitle={category.title}
+  lesson={lesson}
+  asideNote="This course is meant to be read in order — each chapter assumes only what came before it. If a term here is unfamiliar, it was almost certainly defined in an earlier chapter."
+  nextLinks={nextLinks}
+/>

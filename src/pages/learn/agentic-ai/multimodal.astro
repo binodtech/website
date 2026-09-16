@@ -1,0 +1,20 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory } from '@/data/catalog';
+import { agenticAiMultimodal } from '@/data/lessons/agentic-ai-multimodal';
+
+const category = getCategory('agentic-ai')!;
+---
+
+<LessonPage
+  categorySlug="agentic-ai"
+  categoryTitle={category.title}
+  lesson={agenticAiMultimodal}
+  asideNote="If you only read two sections, read the contrastive objective and Flamingo's frozen/trained boundary. Every LMM since is a variation on those two ideas — and Part 4 tells you which parts have since been replaced."
+  nextLinks={[
+    { href: '/learn/agentic-ai/agents', label: 'Agents' },
+    { href: '/learn/agentic-ai/genai-platform', label: 'Building a Generative AI Platform' },
+    { href: '/learn/agentic-ai/ai-pitfalls', label: 'Common Pitfalls When Building GenAI Applications' },
+    { href: '/learn/agentic-ai/real-time-ml', label: 'Real-Time Machine Learning' },
+  ]}
+/>

@@ -1,0 +1,19 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory } from '@/data/catalog';
+import { agenticAiPitfalls } from '@/data/lessons/agentic-ai-pitfalls';
+
+const category = getCategory('agentic-ai')!;
+---
+
+<LessonPage
+  categorySlug="agentic-ai"
+  categoryTitle={category.title}
+  lesson={agenticAiPitfalls}
+  asideNote="Read this one twice: once before you start a project, and again at the moment your first demo gets applause."
+  nextLinks={[
+    { href: '/learn/agentic-ai/agents', label: 'Agents' },
+    { href: '/learn/agentic-ai/genai-platform', label: 'Building a Generative AI Platform' },
+    { href: '/learn/agentic-ai', label: 'Agentic AI track' },
+  ]}
+/>

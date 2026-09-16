@@ -7,6 +7,7 @@ import {
   Building2,
   ChevronRight,
   Cloud,
+  Cpu,
   Code2,
   Coffee,
   Database,
@@ -14,6 +15,7 @@ import {
   ListOrdered,
   MessageSquare,
   Sparkles,
+  Terminal,
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -30,6 +32,9 @@ const learningTracks: HubCard[] = [
   { title: 'Coding / DSA', meta: '25 patterns · 250 problems', href: '/learn/dsa', Icon: Code2 },
   { title: 'LeetCode 75', meta: '75 must-know · ★ rated', href: '/learn/leetcode-75', Icon: ListOrdered },
   { title: 'Java & LLD', meta: 'Core Java, collections, Spring', href: '/learn/java', Icon: Coffee },
+  { title: 'Agentic AI', meta: 'Agents · tools · planning · evals', href: '/learn/agentic-ai', Icon: Sparkles },
+  { title: 'Claude Code', meta: '10 classes · CLI → MCP → production', href: '/learn/claude-code', Icon: Terminal },
+  { title: 'AI Harness', meta: '10 classes · build the agent platform', href: '/learn/ai-harness', Icon: Cpu },
   { title: 'AI & ML', meta: '11 courses · GenAI · agents · IDEs', href: '/learn/ai-engineering', Icon: Sparkles },
   { title: 'Behavioral', meta: 'STAR + leadership stories', href: '/learn/behavioral', Icon: MessageSquare },
   { title: 'Data & Cloud', meta: 'Kafka, Spark, AWS, K8s', href: '/learn/data-cloud', Icon: Cloud },

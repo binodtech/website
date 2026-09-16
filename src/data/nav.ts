@@ -41,6 +41,12 @@ export const sidebarSections: SidebarSection[] = [
 /** Hello Interview–style learn tracks (simple dropdown) */
 export const learnTracks = [
   {
+    label: 'Modern System Design',
+    description: 'Zero to hero — 44 chapters, 156 lessons',
+    href: '/learn/modern-system-design',
+    color: 'bg-sky-100 text-sky-700 dark:bg-sky-500/20 dark:text-sky-300',
+  },
+  {
     label: 'System Design',
     description: 'Concepts, patterns & 30+ breakdowns',
     href: '/learn/system-design',
@@ -57,6 +63,24 @@ export const learnTracks = [
     description: '75 must-know interview problems',
     href: '/learn/leetcode-75',
     color: 'bg-teal-100 text-teal-700 dark:bg-teal-500/20 dark:text-teal-300',
+  },
+  {
+    label: 'Agentic AI',
+    description: 'Agents, tools, planning & evals',
+    href: '/learn/agentic-ai',
+    color: 'bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-500/20 dark:text-fuchsia-300',
+  },
+  {
+    label: 'Claude Code',
+    description: 'Zero to production in 10 classes',
+    href: '/learn/claude-code',
+    color: 'bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-300',
+  },
+  {
+    label: 'AI Harness',
+    description: 'Build the agent infrastructure',
+    href: '/learn/ai-harness',
+    color: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-500/20 dark:text-cyan-300',
   },
   {
     label: 'AI & ML',
@@ -86,7 +110,11 @@ export const learnTracks = [
 
 /** Educative middle-column — one entry per category */
 export const exploreTopics = [
+  { slug: 'modern-system-design', label: 'Modern System Design' },
   { slug: 'system-design', label: 'System Design' },
+  { slug: 'agentic-ai', label: 'Agentic AI' },
+  { slug: 'claude-code', label: 'Claude Code' },
+  { slug: 'ai-harness', label: 'AI Harness' },
   { slug: 'ai-engineering', label: 'Generative AI' },
   { slug: 'data-cloud', label: 'AWS & Cloud' },
   { slug: 'java', label: 'Web Development' },
@@ -102,6 +130,13 @@ export const catalogFilters = [
 
 /** Course badges for mega-menu right column */
 export function topicBadge(slug: string, isFree: boolean): string | null {
+  if (slug === 'roadmap') return 'Start Here';
+  if (slug === 'cli-first-project' || slug === 'context-engineering' || slug === 'skills-commands-hooks')
+    return 'New';
+  if (slug === 'what-is' || slug === 'architecture' || slug === 'build-harness' || slug === 'guardrails')
+    return 'New';
+  if (slug === 'agents' || slug === 'ai-pitfalls' || slug === 'real-time-ml' || slug === 'multimodal')
+    return 'New';
   if (slug === 'fundamentals' || slug === 'patterns-intro') return 'Top Pick';
   if (slug === 'google-collection') return 'Staff Level';
   if (slug === 'chatgpt-system') return 'Trending';

@@ -1,3 +1,142 @@
+/* Lesson page styles. Loaded through <style is:global> in LessonPage.astro,
+   so selectors are plain CSS and dark mode uses the .dark class from global.css. */
+
+/* ---------- shell: sticky left index + content ---------- */
+
+.lesson-shell {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .lesson-shell {
+    grid-template-columns: 17rem minmax(0, 1fr);
+    gap: 3rem;
+  }
+}
+
+.lesson-side {
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .lesson-side {
+    position: sticky;
+    top: 5.5rem;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 0.5rem;
+  }
+}
+
+.lesson-side-box {
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  padding: 1rem 1.125rem;
+}
+.dark .lesson-side-box {
+  border-color: #1e293b;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.lesson-side-box > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.dark .lesson-side-box > summary {
+  color: #e2e8f0;
+}
+.lesson-side-box > summary::-webkit-details-marker {
+  display: none;
+}
+.lesson-side-box > summary::after {
+  content: '⌄';
+  font-size: 1.125rem;
+  line-height: 1;
+  color: #94a3b8;
+  transform: translateY(-2px);
+}
+.lesson-side-box[open] > summary::after {
+  content: '⌃';
+  transform: translateY(3px);
+}
+
+.lesson-side-nav {
+  margin-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.75rem;
+}
+.dark .lesson-side-nav {
+  border-color: #1e293b;
+}
+
+.lesson-side-nav ol,
+.lesson-side-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lesson-side-nav a {
+  display: block;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: #1d4ed8;
+  text-decoration: none;
+}
+.lesson-side-nav a:hover {
+  background: #eff6ff;
+  text-decoration: underline;
+}
+.dark .lesson-side-nav a {
+  color: #93c5fd;
+}
+.dark .lesson-side-nav a:hover {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.lesson-side-nav > ol > li {
+  margin-top: 0.5rem;
+}
+.lesson-side-nav > ol > li > a {
+  font-weight: 600;
+  color: #0f172a;
+}
+.dark .lesson-side-nav > ol > li > a {
+  color: #e2e8f0;
+}
+
+.lesson-side-nav ul {
+  margin: 0.125rem 0 0 0.5rem;
+  border-left: 1px solid #e2e8f0;
+  padding-left: 0.5rem;
+}
+.dark .lesson-side-nav ul {
+  border-color: #1e293b;
+}
+.lesson-side-nav ul ul {
+  margin-left: 0.5rem;
+}
+
+.lesson-section,
+.lesson-prose h3[id],
+.lesson-prose h4[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* ---------- header bits ---------- */
+
 .lesson-tip {
   border-radius: 0.75rem;
   border: 1px solid #bfdbfe;
@@ -6,13 +145,26 @@
   font-size: 0.875rem;
   color: #1e3a8a;
 }
-:global(.dark) .lesson-tip {
+.dark .lesson-tip {
   border-color: rgba(59, 130, 246, 0.3);
   background: rgba(59, 130, 246, 0.1);
   color: #dbeafe;
 }
 
-.lesson-prose :global(h3.lesson-subhead) {
+/* ---------- prose ---------- */
+
+.lesson-prose h3.lesson-subhead {
+  margin-top: 1.75rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+}
+.dark .lesson-prose h3.lesson-subhead {
+  color: #f1f5f9;
+}
+
+.lesson-prose h4.lesson-subhead4 {
   margin-top: 1.25rem;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -20,73 +172,141 @@
   text-transform: uppercase;
   color: #6366f1;
 }
-:global(.dark) .lesson-prose :global(h3.lesson-subhead) {
+.dark .lesson-prose h4.lesson-subhead4 {
   color: #a5b4fc;
 }
 
-.lesson-prose :global(p) {
+.lesson-prose p {
   margin-top: 0.75rem;
-  line-height: 1.625;
+  line-height: 1.7;
   color: #475569;
 }
-:global(.dark) .lesson-prose :global(p) {
+.dark .lesson-prose p {
   color: #cbd5e1;
 }
 
-.lesson-prose :global(ul),
-.lesson-prose :global(ol) {
+.lesson-prose ul,
+.lesson-prose ol {
   margin-top: 0.75rem;
   padding-left: 1.25rem;
   color: #475569;
+  line-height: 1.65;
 }
-.lesson-prose :global(ul) {
+.lesson-prose ul {
   list-style-type: disc;
 }
-.lesson-prose :global(ol) {
+.lesson-prose ol {
   list-style-type: decimal;
 }
-:global(.dark) .lesson-prose :global(ul),
-:global(.dark) .lesson-prose :global(ol) {
+.lesson-prose li {
+  margin-top: 0.375rem;
+}
+.dark .lesson-prose ul,
+.dark .lesson-prose ol {
   color: #cbd5e1;
 }
 
-.lesson-prose :global(table) {
+.lesson-prose strong {
+  color: #0f172a;
+  font-weight: 650;
+}
+.dark .lesson-prose strong {
+  color: #f1f5f9;
+}
+
+.lesson-prose a {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dark .lesson-prose a {
+  color: #93c5fd;
+}
+
+.lesson-prose table {
   margin-top: 1rem;
   width: 100%;
   text-align: left;
   font-size: 0.875rem;
   border-collapse: collapse;
 }
-.lesson-prose :global(th) {
+.lesson-prose th {
   border-bottom: 1px solid #e2e8f0;
   background: #f8fafc;
   padding: 0.5rem 0.75rem;
   font-weight: 600;
 }
-:global(.dark) .lesson-prose :global(th) {
+.dark .lesson-prose th {
   border-color: #334155;
   background: #1e293b;
 }
-.lesson-prose :global(td) {
+.lesson-prose td {
   border-bottom: 1px solid #f1f5f9;
   padding: 0.5rem 0.75rem;
   vertical-align: top;
 }
-:global(.dark) .lesson-prose :global(td) {
+.dark .lesson-prose td {
   border-color: #1e293b;
 }
 
-.lesson-prose :global(code) {
+.lesson-prose code {
   border-radius: 0.25rem;
   background: #f1f5f9;
   padding: 0.125rem 0.375rem;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-:global(.dark) .lesson-prose :global(code) {
+.dark .lesson-prose code {
   background: #1e293b;
 }
 
-.lesson-prose :global(.lesson-callout) {
+.lesson-prose pre {
+  margin-top: 1rem;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  background: #0f172a;
+  padding: 1rem 1.125rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+.lesson-prose pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+.dark .lesson-prose pre {
+  border-color: #1e293b;
+  background: #020618;
+}
+
+.lesson-prose blockquote {
+  margin: 1rem 0 0;
+  border-left: 3px solid #a5b4fc;
+  background: #f8fafc;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: #334155;
+}
+.lesson-prose blockquote p {
+  margin-top: 0;
+}
+.lesson-prose blockquote cite {
+  display: block;
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: #64748b;
+}
+.dark .lesson-prose blockquote {
+  border-color: #6366f1;
+  background: rgba(30, 41, 59, 0.5);
+  color: #cbd5e1;
+}
+
+.lesson-prose .lesson-callout {
   margin-top: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #ddd6fe;
@@ -95,41 +315,726 @@
   font-size: 0.875rem;
   color: #4c1d95;
 }
-:global(.dark) .lesson-prose :global(.lesson-callout) {
+.lesson-prose .lesson-callout p {
+  color: inherit;
+}
+.dark .lesson-prose .lesson-callout {
   border-color: rgba(139, 92, 246, 0.3);
   background: rgba(139, 92, 246, 0.1);
   color: #ede9fe;
 }
 
-.lesson-prose :global(.lesson-flow) {
+.lesson-prose .lesson-warn {
+  border-color: #fecdca;
+  background: #fef2f2;
+  color: #7f1d1d;
+}
+.dark .lesson-prose .lesson-warn {
+  border-color: rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.1);
+  color: #fee2e2;
+}
+
+.lesson-prose .lesson-flow {
   margin-top: 1rem;
   border-radius: 0.5rem;
   background: #f1f5f9;
   padding: 0.75rem 1rem;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: #334155;
   font-family: ui-monospace, monospace;
-  line-height: 1.5;
+  line-height: 1.6;
 }
-:global(.dark) .lesson-prose :global(.lesson-flow) {
+.dark .lesson-prose .lesson-flow {
   background: #1e293b;
   color: #e2e8f0;
 }
 
-.lesson-prose :global(.lesson-diagram) {
+/* ---------- figures & SVG diagrams ---------- */
+
+.lesson-prose .lesson-figure {
+  margin: 1.5rem 0 0;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  padding: 1rem;
+}
+.dark .lesson-prose .lesson-figure {
+  border-color: #1e293b;
+  background: rgba(2, 6, 23, 0.6);
+}
+
+.lesson-prose .lesson-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lesson-prose .lesson-figure figcaption {
+  margin-top: 0.625rem;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+.dark .lesson-prose .lesson-figure figcaption {
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+/* diagram primitives — .dg-* classes used inside inline SVG */
+.lesson-prose svg .dg-band {
+  fill: #f1f5f9;
+  stroke: #cbd5e1;
+}
+.dark .lesson-prose svg .dg-band {
+  fill: #0f172a;
+  stroke: #334155;
+}
+
+.lesson-prose svg .dg-box {
+  fill: #fff;
+  stroke: #94a3b8;
+  stroke-width: 1.25;
+}
+.dark .lesson-prose svg .dg-box {
+  fill: #1e293b;
+  stroke: #64748b;
+}
+
+.lesson-prose svg .dg-box.b {
+  fill: #dbeafe;
+  stroke: #60a5fa;
+}
+.lesson-prose svg .dg-box.g {
+  fill: #dcfce7;
+  stroke: #4ade80;
+}
+.lesson-prose svg .dg-box.o {
+  fill: #ffedd4;
+  stroke: #fb923c;
+}
+.lesson-prose svg .dg-box.p {
+  fill: #ede9fe;
+  stroke: #a78bfa;
+}
+.lesson-prose svg .dg-box.r {
+  fill: #ffe2e2;
+  stroke: #fb7185;
+}
+.dark .lesson-prose svg .dg-box.b {
+  fill: rgba(59, 130, 246, 0.22);
+  stroke: #60a5fa;
+}
+.dark .lesson-prose svg .dg-box.g {
+  fill: rgba(34, 197, 94, 0.2);
+  stroke: #4ade80;
+}
+.dark .lesson-prose svg .dg-box.o {
+  fill: rgba(249, 115, 22, 0.22);
+  stroke: #fb923c;
+}
+.dark .lesson-prose svg .dg-box.p {
+  fill: rgba(139, 92, 246, 0.24);
+  stroke: #a78bfa;
+}
+.dark .lesson-prose svg .dg-box.r {
+  fill: rgba(244, 63, 94, 0.2);
+  stroke: #fb7185;
+}
+
+/* extended palette — c cyan · y amber · k pink · i indigo · l lime · s slate-dark */
+.lesson-prose svg .dg-box.c {
+  fill: #cffafe;
+  stroke: #22d3ee;
+}
+.lesson-prose svg .dg-box.y {
+  fill: #fef9c2;
+  stroke: #facc15;
+}
+.lesson-prose svg .dg-box.k {
+  fill: #fce7f3;
+  stroke: #f472b6;
+}
+.lesson-prose svg .dg-box.i {
+  fill: #e0e7ff;
+  stroke: #818cf8;
+}
+.lesson-prose svg .dg-box.l {
+  fill: #ecfccb;
+  stroke: #a3e635;
+}
+.dark .lesson-prose svg .dg-box.c {
+  fill: rgba(34, 211, 238, 0.2);
+  stroke: #22d3ee;
+}
+.dark .lesson-prose svg .dg-box.y {
+  fill: rgba(250, 204, 21, 0.2);
+  stroke: #facc15;
+}
+.dark .lesson-prose svg .dg-box.k {
+  fill: rgba(244, 114, 182, 0.2);
+  stroke: #f472b6;
+}
+.dark .lesson-prose svg .dg-box.i {
+  fill: rgba(129, 140, 248, 0.24);
+  stroke: #818cf8;
+}
+.dark .lesson-prose svg .dg-box.l {
+  fill: rgba(163, 230, 53, 0.2);
+  stroke: #a3e635;
+}
+
+/* tinted bands, for grouping stages inside one diagram */
+.lesson-prose svg .dg-band.b {
+  fill: #eff6ff;
+  stroke: #bfdbfe;
+}
+.lesson-prose svg .dg-band.g {
+  fill: #f0fdf4;
+  stroke: #bbf7d0;
+}
+.lesson-prose svg .dg-band.o {
+  fill: #fff7ed;
+  stroke: #fed7aa;
+}
+.lesson-prose svg .dg-band.p {
+  fill: #f5f3ff;
+  stroke: #ddd6fe;
+}
+.lesson-prose svg .dg-band.r {
+  fill: #fef2f2;
+  stroke: #fecdca;
+}
+.lesson-prose svg .dg-band.c {
+  fill: #ecfeff;
+  stroke: #a5f3fc;
+}
+.dark .lesson-prose svg .dg-band.b {
+  fill: rgba(59, 130, 246, 0.09);
+  stroke: rgba(96, 165, 250, 0.35);
+}
+.dark .lesson-prose svg .dg-band.g {
+  fill: rgba(34, 197, 94, 0.09);
+  stroke: rgba(74, 222, 128, 0.35);
+}
+.dark .lesson-prose svg .dg-band.o {
+  fill: rgba(249, 115, 22, 0.09);
+  stroke: rgba(251, 146, 60, 0.35);
+}
+.dark .lesson-prose svg .dg-band.p {
+  fill: rgba(139, 92, 246, 0.1);
+  stroke: rgba(167, 139, 250, 0.35);
+}
+.dark .lesson-prose svg .dg-band.r {
+  fill: rgba(244, 63, 94, 0.09);
+  stroke: rgba(251, 113, 133, 0.35);
+}
+.dark .lesson-prose svg .dg-band.c {
+  fill: rgba(34, 211, 238, 0.09);
+  stroke: rgba(34, 211, 238, 0.35);
+}
+.lesson-prose svg .dg-band.y {
+  fill: #fefce8;
+  stroke: #fef08a;
+}
+.lesson-prose svg .dg-band.k {
+  fill: #fdf2f8;
+  stroke: #fbcfe8;
+}
+.lesson-prose svg .dg-band.i {
+  fill: #eef2ff;
+  stroke: #c7d2fe;
+}
+.lesson-prose svg .dg-band.l {
+  fill: #f7fee7;
+  stroke: #d9f99d;
+}
+.dark .lesson-prose svg .dg-band.y {
+  fill: rgba(250, 204, 21, 0.09);
+  stroke: rgba(250, 204, 21, 0.32);
+}
+.dark .lesson-prose svg .dg-band.k {
+  fill: rgba(244, 114, 182, 0.09);
+  stroke: rgba(244, 114, 182, 0.32);
+}
+.dark .lesson-prose svg .dg-band.i {
+  fill: rgba(129, 140, 248, 0.1);
+  stroke: rgba(129, 140, 248, 0.32);
+}
+.dark .lesson-prose svg .dg-band.l {
+  fill: rgba(163, 230, 53, 0.09);
+  stroke: rgba(163, 230, 53, 0.32);
+}
+
+/* frozen modifier — dashed outline marks components held fixed during training */
+.lesson-prose svg .dg-box.frozen {
+  stroke-dasharray: 4 2.5;
+}
+
+.lesson-prose svg .dg-t {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  fill: #0f172a;
+}
+.lesson-prose svg .dg-s {
+  font-family: inherit;
+  font-size: 10px;
+  fill: #64748b;
+}
+.lesson-prose svg .dg-h {
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  fill: #64748b;
+}
+.dark .lesson-prose svg .dg-t {
+  fill: #f1f5f9;
+}
+.dark .lesson-prose svg .dg-s,
+.dark .lesson-prose svg .dg-h {
+  fill: #94a3b8;
+}
+
+.lesson-prose svg .dg-line {
+  fill: none;
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+}
+.lesson-prose svg .dg-line.dash {
+  stroke-dasharray: 4 3;
+}
+.lesson-prose svg .dg-line.hot {
+  stroke: #f97316;
+}
+.dark .lesson-prose svg .dg-line {
+  stroke: #64748b;
+}
+.dark .lesson-prose svg .dg-line.hot {
+  stroke: #fb923c;
+}
+
+.lesson-prose svg .dg-line.blue {
+  stroke: #3b82f6;
+}
+.lesson-prose svg .dg-line.green {
+  stroke: #22c55e;
+}
+.lesson-prose svg .dg-line.violet {
+  stroke: #8b5cf6;
+}
+.lesson-prose svg .dg-line.pink {
+  stroke: #ec4899;
+}
+.lesson-prose svg .dg-line.cyan {
+  stroke: #06b6d4;
+}
+.lesson-prose svg .dg-line.rose {
+  stroke: #f43f5e;
+}
+.lesson-prose svg .dg-line.thick {
+  stroke-width: 2.5;
+}
+.dark .lesson-prose svg .dg-line.blue {
+  stroke: #60a5fa;
+}
+.dark .lesson-prose svg .dg-line.green {
+  stroke: #4ade80;
+}
+.dark .lesson-prose svg .dg-line.violet {
+  stroke: #a78bfa;
+}
+.dark .lesson-prose svg .dg-line.pink {
+  stroke: #f472b6;
+}
+.dark .lesson-prose svg .dg-line.cyan {
+  stroke: #22d3ee;
+}
+.dark .lesson-prose svg .dg-line.rose {
+  stroke: #fb7185;
+}
+
+.lesson-prose svg .dg-ah {
+  fill: #94a3b8;
+  stroke: none;
+}
+.dark .lesson-prose svg .dg-ah {
+  fill: #64748b;
+}
+.lesson-prose svg .dg-ah.blue {
+  fill: #3b82f6;
+}
+.lesson-prose svg .dg-ah.green {
+  fill: #22c55e;
+}
+.lesson-prose svg .dg-ah.violet {
+  fill: #8b5cf6;
+}
+.lesson-prose svg .dg-ah.pink {
+  fill: #ec4899;
+}
+.lesson-prose svg .dg-ah.cyan {
+  fill: #06b6d4;
+}
+.lesson-prose svg .dg-ah.rose {
+  fill: #f43f5e;
+}
+.dark .lesson-prose svg .dg-ah.blue {
+  fill: #60a5fa;
+}
+.dark .lesson-prose svg .dg-ah.green {
+  fill: #4ade80;
+}
+.dark .lesson-prose svg .dg-ah.violet {
+  fill: #a78bfa;
+}
+.dark .lesson-prose svg .dg-ah.pink {
+  fill: #f472b6;
+}
+.dark .lesson-prose svg .dg-ah.cyan {
+  fill: #22d3ee;
+}
+.dark .lesson-prose svg .dg-ah.rose {
+  fill: #fb7185;
+}
+/* orange arrowhead, pairs with .dg-line.hot */
+.lesson-prose svg .dg-ah.hot {
+  fill: #f97316;
+}
+.dark .lesson-prose svg .dg-ah.hot {
+  fill: #fb923c;
+}
+
+/* stage / phase label pill inside diagrams */
+.lesson-prose svg .dg-pill {
+  fill: #0f172a;
+  stroke: none;
+}
+.dark .lesson-prose svg .dg-pill {
+  fill: #e2e8f0;
+}
+.lesson-prose svg .dg-pill-t {
+  font-family: inherit;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  fill: #fff;
+}
+.dark .lesson-prose svg .dg-pill-t {
+  fill: #0f172a;
+}
+
+/* ---------- lists with visual weight ---------- */
+
+.lesson-prose .lesson-layers {
+  margin-top: 1rem;
+  list-style: none;
+  padding-left: 0;
+}
+.lesson-prose .lesson-layers li {
+  margin-top: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #6366f1;
+  background: #f1f5f9;
+  font-size: 0.875rem;
+}
+.dark .lesson-prose .lesson-layers li {
+  background: #1e293b;
+}
+
+.lesson-prose .lesson-checklist {
+  margin-top: 1rem;
+  list-style: none;
+  padding-left: 0;
+}
+.lesson-prose .lesson-checklist li {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.375rem;
+}
+.lesson-prose .lesson-checklist li::before {
+  content: '✓';
+  color: #10b981;
+  font-weight: 700;
+}
+
+.lesson-prose .lesson-steps {
+  margin-top: 1rem;
+  list-style: none;
+  padding-left: 0;
+  counter-reset: lstep;
+}
+.lesson-prose .lesson-steps li {
+  position: relative;
+  counter-increment: lstep;
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+  font-size: 0.9375rem;
+  color: #475569;
+}
+.lesson-prose .lesson-steps li::before {
+  content: counter(lstep);
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #4338ca;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.dark .lesson-prose .lesson-steps li {
+  color: #cbd5e1;
+}
+.dark .lesson-prose .lesson-steps li::before {
+  background: rgba(99, 102, 241, 0.25);
+  color: #c7d2fe;
+}
+
+/* ---------- roadmap components ---------- */
+
+/* phase banner: gradient strip introducing a group of stages */
+.lesson-prose .rm-phase {
+  margin-top: 1.25rem;
+  border-radius: 0.875rem;
+  padding: 0.875rem 1.125rem;
+  color: #fff;
+  background: linear-gradient(90deg, var(--rm-a, #4f46e5), var(--rm-b, #9333ea));
+}
+.lesson-prose .rm-phase .rm-phase-k {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.lesson-prose .rm-phase .rm-phase-t {
+  margin-top: 0.125rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+.lesson-prose .rm-phase .rm-phase-d {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* stage cards: colour-coded skill groups */
+.lesson-prose .rm-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  list-style: none;
+  padding-left: 0;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .lesson-prose .rm-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.lesson-prose .rm-grid li {
+  margin: 0;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid var(--rm, #6366f1);
+  background: #fff;
+  padding: 0.75rem 0.875rem;
+}
+.dark .lesson-prose .rm-grid li {
+  border-color: #1e293b;
+  border-top-color: var(--rm, #6366f1);
+  background: rgba(15, 23, 42, 0.55);
+}
+.lesson-prose .rm-grid .rm-k {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rm, #6366f1);
+}
+.lesson-prose .rm-grid .rm-n {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.dark .lesson-prose .rm-grid .rm-n {
+  color: #f1f5f9;
+}
+.lesson-prose .rm-grid .rm-d {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #475569;
+}
+.dark .lesson-prose .rm-grid .rm-d {
+  color: #cbd5e1;
+}
+
+/* chips: compact skill / tech tags */
+.lesson-prose .rm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.625rem;
+  list-style: none;
+  padding-left: 0;
+}
+.lesson-prose .rm-chips li {
+  margin: 0;
+  border-radius: 999px;
+  padding: 0.1875rem 0.5625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #f1f5f9;
+  color: #334155;
+}
+.dark .lesson-prose .rm-chips li {
+  background: #1e293b;
+  color: #cbd5e1;
+}
+.lesson-prose .rm-chips li.b {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.lesson-prose .rm-chips li.g {
+  background: #dcfce7;
+  color: #166534;
+}
+.lesson-prose .rm-chips li.o {
+  background: #ffedd4;
+  color: #9a3412;
+}
+.lesson-prose .rm-chips li.p {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+.lesson-prose .rm-chips li.c {
+  background: #cffafe;
+  color: #155e75;
+}
+.lesson-prose .rm-chips li.k {
+  background: #fce7f3;
+  color: #9d174d;
+}
+.lesson-prose .rm-chips li.y {
+  background: #fef9c2;
+  color: #854d0e;
+}
+.lesson-prose .rm-chips li.r {
+  background: #ffe2e2;
+  color: #9f1239;
+}
+.dark .lesson-prose .rm-chips li.b {
+  background: rgba(59, 130, 246, 0.2);
+  color: #bfdbfe;
+}
+.dark .lesson-prose .rm-chips li.g {
+  background: rgba(34, 197, 94, 0.18);
+  color: #bbf7d0;
+}
+.dark .lesson-prose .rm-chips li.o {
+  background: rgba(249, 115, 22, 0.2);
+  color: #fed7aa;
+}
+.dark .lesson-prose .rm-chips li.p {
+  background: rgba(139, 92, 246, 0.22);
+  color: #ddd6fe;
+}
+.dark .lesson-prose .rm-chips li.c {
+  background: rgba(34, 211, 238, 0.18);
+  color: #a5f3fc;
+}
+.dark .lesson-prose .rm-chips li.k {
+  background: rgba(244, 114, 182, 0.2);
+  color: #fbcfe8;
+}
+.dark .lesson-prose .rm-chips li.y {
+  background: rgba(250, 204, 21, 0.18);
+  color: #fef08a;
+}
+.dark .lesson-prose .rm-chips li.r {
+  background: rgba(244, 63, 94, 0.18);
+  color: #fecdca;
+}
+
+/* goal / checkpoint band at the end of a stage */
+.lesson-prose .rm-goal {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.625rem;
+  border-radius: 0.625rem;
+  border: 1px solid #a7f3d0;
+  background: linear-gradient(90deg, #ecfdf5, #f0fdfa);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #065f46;
+}
+.lesson-prose .rm-goal::before {
+  content: '🎯';
+  flex: none;
+}
+.dark .lesson-prose .rm-goal {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.1);
+  color: #d1fae5;
+}
+
+.lesson-prose .rm-build {
+  border-color: #bfdbfe;
+  background: linear-gradient(90deg, #eff6ff, #f5f3ff);
+  color: #1e3a8a;
+}
+.lesson-prose .rm-build::before {
+  content: '🔨';
+}
+.dark .lesson-prose .rm-build {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: rgba(59, 130, 246, 0.1);
+  color: #dbeafe;
+}
+
+.lesson-prose .rm-skip {
+  border-color: #fde68a;
+  background: linear-gradient(90deg, #fffbeb, #fef2f2);
+  color: #854d0e;
+}
+.lesson-prose .rm-skip::before {
+  content: '⚡';
+}
+.dark .lesson-prose .rm-skip {
+  border-color: rgba(250, 204, 21, 0.35);
+  background: rgba(250, 204, 21, 0.1);
+  color: #fef3c7;
+}
+
+/* legacy inline box rows (kept for older lessons) */
+.lesson-prose .lesson-diagram {
   margin-top: 1rem;
   border-radius: 0.75rem;
   border: 1px dashed #cbd5e1;
   background: #f8fafc;
   padding: 1rem;
 }
-:global(.dark) .lesson-prose :global(.lesson-diagram) {
+.dark .lesson-prose .lesson-diagram {
   border-color: #475569;
   background: #0f172a;
 }
-
-.lesson-prose :global(.lesson-diagram-title) {
+.lesson-prose .lesson-diagram-title {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -137,16 +1042,14 @@
   color: #64748b;
   margin-bottom: 0.75rem;
 }
-
-.lesson-prose :global(.lesson-arch-row) {
+.lesson-prose .lesson-arch-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
   margin-bottom: 0.5rem;
 }
-
-.lesson-prose :global(.lesson-box) {
+.lesson-prose .lesson-box {
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
   font-size: 0.8125rem;
@@ -156,52 +1059,19 @@
   background: #e2e8f0;
   color: #334155;
 }
-.lesson-prose :global(.lesson-box.purple) {
+.lesson-prose .lesson-box.purple {
   background: #ddd6fe;
   color: #5b21b6;
 }
-.lesson-prose :global(.lesson-box.green) {
+.lesson-prose .lesson-box.green {
   background: #bbf7d0;
   color: #166534;
 }
-.lesson-prose :global(.lesson-box.orange) {
+.lesson-prose .lesson-box.orange {
   background: #fed7aa;
   color: #9a3412;
 }
-.lesson-prose :global(.lesson-box.blue) {
+.lesson-prose .lesson-box.blue {
   background: #bfdbfe;
   color: #1e40af;
-}
-
-.lesson-prose :global(.lesson-layers) {
-  margin-top: 1rem;
-  list-style: none;
-  padding-left: 0;
-}
-.lesson-prose :global(.lesson-layers li) {
-  margin-top: 0.5rem;
-  padding: 0.625rem 0.875rem;
-  border-radius: 0.5rem;
-  border-left: 4px solid #6366f1;
-  background: #f1f5f9;
-  font-size: 0.875rem;
-}
-:global(.dark) .lesson-prose :global(.lesson-layers li) {
-  background: #1e293b;
-}
-
-.lesson-prose :global(.lesson-checklist) {
-  margin-top: 1rem;
-  list-style: none;
-  padding-left: 0;
-}
-.lesson-prose :global(.lesson-checklist li) {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.375rem;
-}
-.lesson-prose :global(.lesson-checklist li)::before {
-  content: '✓';
-  color: #10b981;
-  font-weight: 700;
 }

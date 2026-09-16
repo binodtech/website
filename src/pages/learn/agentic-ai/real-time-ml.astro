@@ -1,0 +1,19 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory } from '@/data/catalog';
+import { agenticAiRealTimeMl } from '@/data/lessons/agentic-ai-real-time-ml';
+
+const category = getCategory('agentic-ai')!;
+---
+
+<LessonPage
+  categorySlug="agentic-ai"
+  categoryTitle={category.title}
+  lesson={agenticAiRealTimeMl}
+  asideNote="Read the two ladders in the first section before anything else — almost every disagreement about 'going real-time' is really two people standing on different ladders."
+  nextLinks={[
+    { href: '/learn/agentic-ai/genai-platform', label: 'Building a Generative AI Platform' },
+    { href: '/learn/agentic-ai/ai-pitfalls', label: 'Common Pitfalls When Building GenAI Applications' },
+    { href: '/learn/agentic-ai/roadmap', label: 'Agentic AI Roadmap' },
+  ]}
+/>

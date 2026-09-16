@@ -122,6 +122,7 @@ export const interviewHub = [
   { title: 'Coding Interviews', desc: 'DSA patterns & top problems', href: '/learn/dsa', icon: 'Terminal' },
   { title: 'System Design', desc: '34 full revision tracks', href: '/learn/system-design', icon: 'Boxes' },
   { title: 'Behavioral', desc: 'STAR & top questions', href: '/learn/behavioral', icon: 'MessageSquare' },
+  { title: 'Agentic AI', desc: 'Agents, tools, planning, evals', href: '/learn/agentic-ai', icon: 'Sparkles' },
   { title: 'AI Engineering', desc: 'RAG, agents, ML interviews', href: '/learn/ai-engineering', icon: 'Sparkles' },
   { title: 'Mock Interviews', desc: 'Practice with AI interviewer', href: '/pricing?feature=mock', icon: 'Mic' },
   { title: 'Company Playbooks', desc: 'Google, Meta, Amazon…', href: '/pricing?plan=pro', icon: 'Building2' },

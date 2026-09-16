@@ -1,0 +1,48 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory, getTopic } from '@/data/catalog';
+import { ccRegistry, ccWrittenSlugs } from '@/data/lessons/cc-index';
+
+export function getStaticPaths() {
+  const category = getCategory('claude-code')!;
+  // Course order comes from the catalog so Previous/Next follows the syllabus.
+  const ordered = category.topics.map((t) => t.slug).filter((slug) => ccWrittenSlugs.includes(slug));
+
+  return ordered.map((slug, i) => ({
+    params: { chapter: slug },
+    props: {
+      chapterSlug: slug,
+      prevSlug: i > 0 ? ordered[i - 1] : null,
+      nextSlug: i < ordered.length - 1 ? ordered[i + 1] : null,
+    },
+  }));
+}
+
+const { chapterSlug, prevSlug, nextSlug } = Astro.props as {
+  chapterSlug: string;
+  prevSlug: string | null;
+  nextSlug: string | null;
+};
+
+const category = getCategory('claude-code')!;
+const lesson = ccRegistry[chapterSlug];
+
+const linkFor = (slug: string) => {
+  const topic = getTopic('claude-code', slug);
+  return { href: `/learn/claude-code/${slug}`, label: topic?.title ?? slug };
+};
+
+const nextLinks = [
+  ...(nextSlug ? [linkFor(nextSlug)] : []),
+  ...(prevSlug ? [linkFor(prevSlug)] : []),
+  { href: '/learn/claude-code', label: 'Full course syllabus' },
+];
+---
+
+<LessonPage
+  categorySlug="claude-code"
+  categoryTitle={category.title}
+  lesson={lesson}
+  asideNote="The ten classes build on each other — context engineering in Class 3 is what makes the agent work in Class 4, and skills, MCP and subagents in Classes 6 to 8 are what make Classes 9 and 10 possible. Read them in order."
+  nextLinks={nextLinks}
+/>

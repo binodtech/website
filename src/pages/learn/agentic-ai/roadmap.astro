@@ -1,0 +1,19 @@
+---
+import LessonPage from '@/components/LessonPage.astro';
+import { getCategory } from '@/data/catalog';
+import { agenticAiRoadmap } from '@/data/lessons/agentic-ai-roadmap';
+
+const category = getCategory('agentic-ai')!;
+---
+
+<LessonPage
+  categorySlug="agentic-ai"
+  categoryTitle={category.title}
+  lesson={agenticAiRoadmap}
+  asideNote="Start here. Everything else in this track is one of the fifteen stages below, explained in depth."
+  nextLinks={[
+    { href: '/learn/agentic-ai/agents', label: 'Agents (Stages 7–10 in depth)' },
+    { href: '/learn/agentic-ai/genai-platform', label: 'Building a Generative AI Platform' },
+    { href: '/learn/agentic-ai/ai-pitfalls', label: 'Common Pitfalls When Building GenAI Applications' },
+  ]}
+/>
